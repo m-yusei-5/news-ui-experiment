@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/start.css">
+    <title>開始画面</title>
+</head>
+<body>
+    <header>
+        <h1>実験について</h1>   
+        <p class="thanks">
+            本実験にご参加いただきありがとうございます。
+        </p>
+        <p class="direction">
+            以下の項目をよく読んでから実験を開始するようお願いします。
+        </p>
+    </header>
+    <main class="start_frame">
+        <div class="start_headline">
+            【実験の流れ】
+        </div>
+        <div class="experiment_flow">
+            1.ニュースの閲覧<br>
+            ↓<br>
+            2.閲覧後の質問<br>
+            ↓<br>
+            3.アンケート
+        </div>
+    </main>
+
+    <main class="start_frame">
+        <div class="start_headline">
+            【注意事項】
+        </div>
+        
+        <ul class="important_notes">
+            <li><strong>スマートフォンで閲覧</strong>し、縦向きでご参加ください。</li>
+            <li>普段スマートフォンでニュースを見るときと同じような感覚で、<strong>自由に閲覧してください。</strong></li>
+            <li><strong>閲覧を終えたいと思ったタイミング</strong>で終了してください。</li>
+            <li>本研究はご自身のニュース閲覧時間に加えて、質問とアンケートに10分〜15分ほどかかる想定です。</li>
+            <li>実験を途中で中断する必要がないよう、<strong>十分な時間を確保</strong>したうえでご参加ください。</li>
+            <li>実験中はブラウザの<strong>「戻る」操作</strong>や、<strong>ページの再読み込み</strong>を行わないでください。</li>
+            <li>実験中は、できるだけ<strong>ブラウザを閉じたり、</strong><strong>他のアプリに切り替えたり</strong>せずに進めてください。</li>
+        </ul>
+        
+    </main>
+
+    <!-- <main class="start_frame">
+        <div class="start_headline">
+            【所要時間】
+        </div>
+    </main> -->
+    
+    <button id="start_button">
+        実験を開始
+    </button>
+    
+    <script src="js/news-data.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/start.js"></script>
+
+</body>
+</html>

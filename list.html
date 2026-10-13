@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>複数提示UI</title>
+</head>
+<body>
+    <div id="orientation_warning">
+        <p>
+        この実験は縦画面で実施してください。<br>
+        端末を縦向きに戻してください。
+        </p>
+    </div>
+    <div class="list_frame">
+        <header>
+            <a href="cognition.html" class="end_button">
+                <button class="icon">
+                    ×
+                </button>
+                <span class="end_text">
+                    閲覧終了
+                </span>
+            </a>
+        </header>
+
+        <main id="list-container"></main>
+
+        <script src="js/news-data.js"></script>
+
+        <script src="js/log.js"></script>
+
+        <script src="js/list.js"></script>
+    </div>
+    <footer>
+        記事は以上で終了です
+    </footer>
+</body>
+</html>

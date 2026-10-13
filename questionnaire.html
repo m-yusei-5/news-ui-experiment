@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/queationnaire.css">
+    <title>アンケート</title>
+</head>
+<body>
+    <header>
+        <h1>アンケート</h1>
+        <p>
+            最後に、以下のアンケートに回答お願いします。
+        </p>
+    </header>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段、ニュースを見る頻度はどの程度ですか？
+        </p>
+        <main class="questionnaire_option">
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="almost_none">
+                ほとんど見ない
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="few_month">
+                月に数回
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="one_two_week">
+                週1〜2日
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="three_four_week">
+                週3〜4日
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="five_six_week">
+                週5〜6日
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="one_day">
+                1日1回程度
+            </label>
+            <label class="each_option">
+                <input type="radio" name="news_frequency" value="few_day">
+                1日複数回
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段、ニュースを見る際に最もよく利用する媒体を1つ選んでください。
+        </p>
+        <main class="questionnaire_option">
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="news_app">
+                ニュースアプリ
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="portal_site">
+                Yahoo!JAPANなどのポータルサイト
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="SNS">
+                SNS
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="Web_search">
+                Web検索
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="YouTube_video">
+                YouTubeなどの動画サービス
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="TV">
+                テレビ
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="newspaper">
+                新聞
+            </label>
+            <label class="each_option">
+                <input type="radio" name="main_news_medium" value="other">
+                その他
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段、ニュースにどの程度関心がありますか？
+        </p>
+        <div class="scale_label_original">
+                <span>全く関心がない</span>
+                <span>非常に関心がある</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="news_interest" value="7">
+                7
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段ニュースを見る前、あらかじめ見たい記事を決めずに閲覧を始めることが多い。
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="non_goal_browsing" value="7">
+                7
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段ニュースを見ている最中、特定の記事や情報を探すことが多い。
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="search_tendency" value="7">
+                7
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            今回のニュース閲覧では、特定の記事や情報を探しながら閲覧していた。
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="current_search_intent" value="7">
+                7
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段、複数の記事が一覧で表示される形式のサービスでニュースを閲覧することが多い。
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="list_ui_familiarity" value="7">
+                7
+            </label>
+        </main>
+    </div>
+    <div class="questionnaire_container">
+        <p class="question">
+            普段、1画面に1つのコンテンツが表示され、上下に切り替えて閲覧する形式のサービスを利用することが多い。（TikTokなど）
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="7">
+                7
+            </label>
+        </main>
+    </div>
+
+    <button id="answer_button">
+        回答を送信
+    </button>
+
+    <script src="js/news-data.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>

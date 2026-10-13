@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/declaration.css">
+    <title>閲覧記事アンケート</title>
+</head>
+<body>
+    <header>
+        <h1>閲覧記事アンケート</h1>
+        <h2>
+            <p>
+                閲覧した記事について、<br>
+                先ほどの閲覧中に、<span class=important>見出しに目を通したと記憶している記事</span>をすべて選択してください。
+            </p>
+            <p>
+                <span class=important>
+                記事の詳細ページを開いたかどうかに関係なく、見出しに目を通したと思う記事を選択してください。
+                </span>
+            </p>
+        </h2>
+    </header>
+
+    <main id="declaration-container"></main>
+
+    <button id="answer_button">
+        回答を送信
+    </button>
+    
+    <script src="js/news-data.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/declaration.js"></script>
+</body>
+</html>

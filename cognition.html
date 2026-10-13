@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cognition.css">
+    <title>認知負荷アンケート</title>
+</head>
+<body>
+    <header>
+        <h1>ニュース閲覧について</h1>
+        <p>
+            先ほどのニュース閲覧について、<br>
+            以下の質問に答えてください。
+        </p>
+    </header>
+    <div class="question_container">
+            <p class="question">
+        先ほどのニュース閲覧全体を通して、どの程度の精神的労力が必要だったと感じましたか？ 
+        </p>
+        <p class="supplement">
+            ※ここでいう精神的労力とは、閲覧する際に「頭を働かせた」程度を指します。
+        </p>
+        <div class="scale_label">
+                <span>非常に低い</span>
+                <span>非常に高い</span>
+        </div>
+        <main class="paas_option">
+            <span class="number_option">
+                <input type="radio" name="paas" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="7">
+                7
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="8">
+                8
+            </span>
+            <span class="number_option">
+                <input type="radio" name="paas" value="9">
+                9
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            自分が興味のある記事を見つけることは難しかったですか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="article_search" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="article_search" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            見出しから、その記事がどのような内容なのかを把握することは難しかったですか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="headline_grasp" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            ニュースを閲覧している途中で、目の前の記事への注意が途切れることがありましたか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="attention_lapse" value="7">
+                7
+            </span>
+        </main>
+    </div>
+    
+    <div class="question_container">
+        <p class="original_question">
+            ニュースを次々と閲覧するための操作を煩わしく感じましたか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="operation_burden" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            ニュースの閲覧によって、精神的な疲れを感じましたか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="mental_fatigue" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            ニュースを見やすいと感じた
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="visibility" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="visibility" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            今回の表示形式でのニュース閲覧に満足した
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="satisfaction" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            普段ニュースを見る際にも，この表示形式を利用したいと思う
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="continued_use" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <div class="question_container">
+        <p class="original_question">
+            今回のニュースの表示形式を使いやすいと感じた
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <span class="number_option">
+                <input type="radio" name="usability" value="1">
+                1
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="2">
+                2
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="3">
+                3
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="4">
+                4
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="5">
+                5
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="6">
+                6
+            </span>
+            <span class="number_option">
+                <input type="radio" name="usability" value="7">
+                7
+            </span>
+        </main>
+    </div>
+
+    <button id="answer_button">
+        回答を送信
+    </button>
+    
+    <script src="js/news-data.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/cognition.js"></script>
+</body>
+</html>
