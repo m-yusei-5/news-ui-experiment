@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+.list_frame {
+    width: 100%;
+    max-width: 235px;
+    margin: 0 auto;
+    font-family: "Noto Sans JP", sans-serif;
+    color: #333333;
+}
+
+header {
+    margin: 20px 0 20px;
+    height: 35px;
+    
+}
+
+.end_button {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 121px;
+    height: 35px;
+    padding: 0 0 0 7px;
+    margin: 0 0 27px 0px;
+    gap: 19px;
+    background-color: #EAEAEA;
+    border-radius: 30px;
+    transform: translateX(-50px);
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.end_text {
+    font-size: 13px;
+}
+
+.title {
+    font-size: 12px;
+    font-weight: bold;
+    width: fit-content;
+    margin: 0 auto 0px;
+    padding-left: 5px;
+    line-break: strict;
+    line-height: 1.4;
+}
+
+.list_date {
+    text-align: right;
+    font-size: 11px;
+    color: #777777;
+    padding: 5px 0 8px;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    margin-bottom: 17px;
+}
+
+.list_image {
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 16/11;
+    margin: 0 auto 15px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* .img_shiiku img,
+.img_valley img {
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 16/10;
+    margin: 0 auto 15px;
+    object-fit: cover;
+    object-position: center 30%;
+} */
+
+#orientation_warning {
+  display: none;
+}
+
+footer {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777777;
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  body {
+    overflow: hidden;
+  }
+
+  #orientation_warning {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+
+    background-color: #ffffff;
+  }
+}
+

@@ -1,0 +1,121 @@
+body {
+    font-family: "Noto Sans JP", sans-serif;
+}
+header {
+    margin: 20px 0 20px;
+    height: 35px;
+}
+
+
+
+.back_button {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    padding: 0 0 0 7px;
+    margin: 0 0 27px 15px;
+    gap: 19px;
+    background-color: #EAEAEA;
+    border-radius: 30px;
+}
+
+.back_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    margin: 0;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+ .back_icon img {
+    transform: rotate(90deg);
+    width: 15px;
+    height: 15px;
+    margin: 0;
+} 
+
+.back_text {
+    font-size: 13px;
+}
+
+.detail_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #444444;
+    width: 330px;
+    margin: 0 auto 5px;
+    padding-left: 5px;
+    line-break: strict;
+    line-height: 1.4;
+}
+
+.detail_date {
+    font-size: 14px;
+    color: #777777;
+    text-align: right;
+    margin: 0 18px 15px 0;
+
+}
+
+.detail_image {
+    display: block;
+    width: 330px;
+    aspect-ratio: 16/11;
+    margin: 0 auto 30px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.detail_paragraph {
+    width: 330px;
+    font-size: 17px;
+    color: #555555;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.detail_paragraph p {
+    margin: 0 0 25px;
+}
+
+.detail_paragraph strong {
+    display: block;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 10px 0 13px;
+}
+
+#orientation_warning {
+    display: none;
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  body {
+    overflow: hidden;
+  }
+
+  #orientation_warning {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+
+    background-color: #ffffff;
+  }
+}

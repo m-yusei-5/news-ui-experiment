@@ -1,0 +1,237 @@
+@charset "utf-8";
+
+body {
+  width: 100%;
+  max-width: 390px;
+  height: 100%;
+  margin: 0 auto;
+
+  font-family: "Noto Sans JP", sans-serif;
+  color: #333333;
+  background-color: #ffffff;
+
+  overflow: hidden;
+}
+
+/* スクロールする親要素 */
+
+#single_container {
+  width: 100%;
+
+  /*
+   * スクロール領域を
+   * スマホ画面と同じ高さにする
+   */
+  height: 100dvh;
+
+  overflow-y: auto;
+
+  /*
+   * 縦方向で各記事にスナップする
+   */
+  scroll-snap-type: y mandatory;
+
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+
+#single_container_finish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100dvh;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+#single_container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 終了ボタン */
+
+header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  z-index: 10;
+
+  width: 100%;
+  max-width: 390px;
+  height: 35px;
+  padding-left: 15px;
+
+  transform: translateX(-50%);
+
+  /*
+   * ヘッダーの透明部分で
+   * スワイプを妨げないようにする
+   */
+  pointer-events: none;
+}
+
+.end_button {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+
+  width: 121px;
+  height: 35px;
+  padding: 0 10px 0 7px;
+
+  background-color: #eaeaea;
+  border-radius: 30px;
+
+  pointer-events: auto;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0 0 2px;
+
+  color: #333333;
+  font-size: 18px;
+
+  border: none;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.end_text {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* 1記事につき1画面分の領域 */
+
+.single_page {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100dvh;
+
+  padding: 45px 20px 45px;
+
+  /*
+   * この要素の先頭位置で止まる
+   */
+  scroll-snap-align: start;
+
+  /*
+   * 一度のスワイプで
+   * 記事を飛ばしにくくする
+   */
+  scroll-snap-stop: always;
+}
+
+/* 記事全体のリンク */
+
+.single_link {
+  display: block;
+
+  /*
+   * 複数提示と同じカード幅
+   */
+  width: 235px;
+
+}
+
+p {
+  width: 100%;
+  margin: 0;
+}
+
+/* 記事画像 */
+
+.single_image {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  margin: 0 auto 15px;
+
+  object-fit: cover;
+  object-position: center top;
+
+  border-radius: 10px;
+}
+
+/* 記事タイトル */
+
+.single_title {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0 0 17px 5px;
+
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.4;
+  line-break: strict;
+}
+
+/* スワイプ案内 */
+
+.swipe_guide{
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+
+  margin: 0;
+
+  color: #777777;
+  font-size: 11px;
+  white-space: nowrap;
+
+  transform: translateX(-50%);
+}
+
+.swipe_icon {
+    text-align: center;
+    margin: 3px;
+    font-size: 13px;
+}
+
+#orientation_warning {
+  display: none;
+}
+
+@media (orientation: landscape) and (pointer: coarse) {
+  body {
+    overflow: hidden;
+  }
+
+  #orientation_warning {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+
+    background-color: #ffffff;
+  }
+}
+
+

@@ -1,0 +1,56 @@
+body {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+header h1{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 40px;
+    padding: 5px 5px;
+    /* border-bottom: 1px solid #555555; */
+}
+
+header h2 {
+    font-size: 15px;
+    margin: 0 8px 40px;
+    padding: 10px 10px;
+    color: #555555;
+}
+
+.memory_question {
+    width: 330px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 30px 17px 25px 20px;
+    margin:0 auto 30px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 5px;
+    margin: 0  10px 10px 70px;
+}
+
+p {
+    width: fit-content;
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+#answer_button {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    margin: 80px auto 80px;
+    border: 1px solid #787878;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #e1e1e1;
+}
