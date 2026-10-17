@@ -47,6 +47,9 @@ export async function loginAnonymously() {
 
 export async function saveExperimentData() {
 
+    // Firebaseの認証状態の復元を待つ
+    await auth.authStateReady();
+
     // 認証済みユーザーの情報を取得
     const user = auth.currentUser;
 
