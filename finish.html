@@ -12,18 +12,45 @@
 </head>
 <body>
     <main class="finish_container">
-        <h1>実験は以上で終了です。</h1>
 
-        <p>
-            今回ご回答いただいた内容や閲覧データは、<br>
-            本研究のために大切に活用させていただきます。
-        </p>
+        <!-- データ保存中に表示 -->
+        <div id="saving_message">
+            <div class="loading_spinner"></div>
+            <h1>実験データを保存しています...</h1>
+            <p>画面を閉じずにお待ちください。</p>
+        </div>
 
-        <p>
-            最後までご協力いただき、本当にありがとうございました。
-        </p>
+        <!-- 保存成功後に表示 -->
+        <div id="finish_message" style="display: none;">
+            <h1>実験は以上で終了です。</h1>
+
+            <p>
+                今回ご回答いただいた内容や閲覧データは、<br>
+                本研究のために大切に活用させていただきます。
+            </p>
+
+            <p>
+                最後までご協力いただき、本当にありがとうございました。
+            </p>
+        </div>
+
+        <!-- 保存失敗時に表示 -->
+        <div id="error_message" style="display: none;">
+            <h1>データの保存に失敗しました。</h1>
+
+            <p>
+                通信環境をご確認のうえ、<br>
+                もう一度お試しください。
+            </p>
+
+            <button id="retry_button">
+                再試行
+            </button>
+        </div>
+
     </main>
 
     <script src="js/log.js"></script>
+    <script type="module" src="js/finish.js"></script>
 </body>
 </html>
