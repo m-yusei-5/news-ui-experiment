@@ -1,12 +1,9 @@
-if (
-  sessionStorage.getItem("experimentStartTime") === null
-) {
-  startExperiment("single");
+if (sessionStorage.getItem("experimentStartTime") === null) {
+  startExperiment("list");
+}
 
-  sessionStorage.setItem(
-    "browsingStartTime",
-    Date.now()
-  );
+if (sessionStorage.getItem("browsingStartTime") === null) {
+  sessionStorage.setItem("browsingStartTime", Date.now());
 }
 
 //HTMLのsingle_UIのの
