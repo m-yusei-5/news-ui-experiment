@@ -25,7 +25,7 @@ header h2 {
     width: 330px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 30px 17px 25px 20px;
+    padding: 30px 17px 20px 20px;
     margin:0 auto 30px;
 }
 
@@ -34,12 +34,12 @@ label {
     align-items: center;
     width: fit-content;
     gap: 5px;
-    margin: 0  10px 10px 70px;
+    margin: 0px  10px 20px 70px;
 }
 
 p {
     width: fit-content;
-    margin-bottom: 30px;
+    margin: 0 auto 40px;
     font-size: 18px;
     line-height: 1.4;
 }
