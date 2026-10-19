@@ -284,6 +284,7 @@ endButton.addEventListener(
 
     addLog(
       "browsing_end",
+      null,
       {
         browsingTime: Date.now() - browsingStartTime
       }

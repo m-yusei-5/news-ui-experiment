@@ -2,6 +2,11 @@ if (
   sessionStorage.getItem("experimentStartTime") === null
 ) {
   startExperiment("single");
+
+  sessionStorage.setItem(
+    "browsingStartTime",
+    Date.now()
+  );
 }
 
 //HTMLのsingle_UIのの
@@ -204,8 +209,18 @@ endButton.addEventListener(
   ()=>{
     endAllArticleExposure();
 
+    const browsingStartTime = Number(
+      sessionStorage.getItem(
+        "browsingStartTime"
+      )
+    );
+
     addLog(
-      "browsing_end"
+      "browsing_end",
+      null,
+      {
+        browsingTime: Date.now() - browsingStartTime
+      }
     );
 
     window.location.href =
