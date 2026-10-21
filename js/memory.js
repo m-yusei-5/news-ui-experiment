@@ -80,34 +80,62 @@ const dummyArticles = [
   }
 ];
 
+// 閲覧可能だった記事を再認課題用に変換
 const seenArticles = testArticles.map(
-    (article)=>{
-        return{
+    (article) => {
+        return {
             id: article.id,
             title: article.title,
             correctAnswer: "seen"
-        }
+        };
     }
 );
 
+// 閲覧可能だった記事をシャッフル
 for (let i = seenArticles.length - 1; i > 0; i--) {
 
-    const j =
-        Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (i + 1));
 
-    [
-        seenArticles[i],
-        seenArticles[j]
-    ] = [
-        seenArticles[j],
-        seenArticles[i]
-    ];
+    [seenArticles[i], seenArticles[j]] =
+        [seenArticles[j], seenArticles[i]];
 }
 
-const selectedSeenArticles =
-    seenArticles.slice(0, 10);
+// 最大20件、かつ偶数件を抽出
+const count = Math.min(
+    Math.floor(seenArticles.length / 2) * 2,
+    20
+);
 
-const memoryQuestions = [...selectedSeenArticles,...dummyArticles];
+const selectedArticles = seenArticles.slice(0, count);
+
+// 半分に分ける
+const half = count / 2;
+
+// そのまま出題する元記事
+const selectedSeenArticles = selectedArticles.slice(0, half);
+
+// ダミーに置き換える元記事
+const dummySourceArticles = selectedArticles.slice(half);
+
+// 対応するダミー記事を取得
+const selectedDummyArticles = dummySourceArticles.map(
+    (article) => {
+        return dummyArticles.find(
+            (dummy) => dummy.sourceId === article.id
+        );
+    }
+);
+
+// ダミーが存在するか確認
+if (selectedDummyArticles.some((dummy) => !dummy)) {
+    throw new Error("対応するダミー記事がありません");
+}
+
+// 元記事とダミー記事を結合
+const memoryQuestions = [
+    ...selectedSeenArticles,
+    ...selectedDummyArticles
+];
 
 for (let i = memoryQuestions.length - 1; i > 0; i--) {
 

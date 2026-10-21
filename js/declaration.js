@@ -1,6 +1,34 @@
 const container = document.getElementById("declaration-container");
 
-newsData.forEach((news)=>{
+// 閲覧ログを取得
+const logs = getLogs();
+
+// 画面に表示された記事のログだけ抽出
+const visibleLogs = logs.filter(
+    (log) => {
+        return log.event === "article_visible";
+    }
+);
+
+// 表示された記事のIDを取得
+const visibleArticleIds = visibleLogs.map(
+    (log) => {
+        return log.articleId;
+    }
+);
+
+// 重複したIDを削除
+const uniqueVisibleIds = [...new Set(visibleArticleIds)];
+
+// 表示された記事だけを抽出
+const visibleArticles = newsData.filter(
+    (news) => {
+        return uniqueVisibleIds.includes(news.id);
+    }
+);
+
+// 表示された記事だけを自己申告画面に追加
+visibleArticles.forEach((news)=>{
     const optionHTML = `
         <label class="article_option" data-article-id="${news.id}">
             <input type = "checkbox" name = "viewedArticle" value = "${news.id}">
