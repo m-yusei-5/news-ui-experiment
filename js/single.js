@@ -239,6 +239,12 @@ endButton.addEventListener(
 
     sessionStorage.setItem("browsingFinished", "true");
 
+    alert(
+      "遷移直前\n" +
+      "stage: " + sessionStorage.getItem("experimentStage") +
+      "\nlogs: " + getLogs().length
+    );
+
     goToNextStage("cognition", "cognition.html");
 
   }
@@ -252,6 +258,7 @@ window.addEventListener("pageshow", (event) => {
     sessionStorage.getItem("experimentStage") === "browsing"
   ) {
     observer.disconnect();
-    startArticleObserver();
+    endAllArticleExposure();
+    restoreSinglePosition();
   }
 });
