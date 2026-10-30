@@ -208,57 +208,35 @@ if (sessionStorage.getItem("experimentStage") === "browsing") {
 }
 
 
-endButton.addEventListener(
-  "click",
-  ()=>{
-    const confirmed = window.confirm(
-        "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
-      );
+endButton.addEventListener("click", () => {
+  const confirmed = window.confirm(
+    "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
+  );
 
-      if (!confirmed) {
-        return;
-      }
+  if (!confirmed) return;
 
-    endButton.disabled = true;
+  endButton.disabled = true;
 
+  try {
     endAllArticleExposure();
 
     const browsingStartTime = Number(
-      sessionStorage.getItem(
-        "browsingStartTime"
-      )
+      sessionStorage.getItem("browsingStartTime")
     );
 
-    addLog(
-      "browsing_end",
-      null,
-      {
-        browsingTime: Date.now() - browsingStartTime
-      }
-    );
+    addLog("browsing_end", null, {
+      browsingTime: Date.now() - browsingStartTime
+    });
 
     sessionStorage.setItem("browsingFinished", "true");
 
-    alert(
-      "遷移直前\n" +
-      "stage: " + sessionStorage.getItem("experimentStage") +
-      "\nlogs: " + getLogs().length
-    );
+    alert("ログ保存成功。認知負荷画面へ移動します。");
 
     goToNextStage("cognition", "cognition.html");
 
-  }
-);
-
-window.addEventListener("pageshow", (event) => {
-  checkExperimentStage("browsing");
-
-  if (
-    event.persisted &&
-    sessionStorage.getItem("experimentStage") === "browsing"
-  ) {
-    observer.disconnect();
-    endAllArticleExposure();
-    restoreSinglePosition();
+  } catch (error) {
+    alert("エラー：" + error.message);
+    console.error(error);
+    endButton.disabled = false;
   }
 });
