@@ -213,30 +213,23 @@ endButton.addEventListener("click", () => {
     "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
   );
 
-  if (!confirmed) return;
+  if (!confirmed) {
+    return;
+  }
 
   endButton.disabled = true;
 
-  try {
-    endAllArticleExposure();
+  endAllArticleExposure();
 
-    const browsingStartTime = Number(
-      sessionStorage.getItem("browsingStartTime")
-    );
+  const browsingStartTime = Number(
+    sessionStorage.getItem("browsingStartTime")
+  );
 
-    addLog("browsing_end", null, {
-      browsingTime: Date.now() - browsingStartTime
-    });
+  addLog("browsing_end", null, {
+    browsingTime: Date.now() - browsingStartTime
+  });
 
-    sessionStorage.setItem("browsingFinished", "true");
+  sessionStorage.setItem("browsingFinished", "true");
 
-    alert("ログ保存成功。認知負荷画面へ移動します。");
-
-    goToNextStage("cognition", "cognition.html");
-
-  } catch (error) {
-    alert("エラー：" + error.message);
-    console.error(error);
-    endButton.disabled = false;
-  }
+  goToNextStage("cognition", "cognition.html");
 });
