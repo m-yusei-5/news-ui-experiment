@@ -44,11 +44,28 @@ visibleArticles.forEach((news)=>{
     );
 });
 
+
 const answerButton = document.getElementById("answer_button");
+
+answerButton.disabled = true;
+
+let declarationStartTime;
+
+if (sessionStorage.getItem("experimentStage") === "declaration") {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            declarationStartTime = startTimer();
+            answerButton.disabled = false;
+        });
+    });
+}
+
 
 answerButton.addEventListener(
     "click",
     ()=>{
+        answerButton.disabled = true;
+
         const options = document.querySelectorAll(".article_option");
 
         options.forEach(
@@ -70,6 +87,20 @@ answerButton.addEventListener(
         );
         console.log("回答完了");
 
-        window.location.href = "questionnaire.html";
+
+        addLog(
+                "declaration_complete",
+                    null,
+                    {
+                        responseTimeMs: getElapsedTime(declarationStartTime),
+                        questionCount: visibleArticles.length
+                    }
+                );
+
+        goToNextStage("questionnaire", "questionnaire.html");
     }
 );
+
+window.addEventListener("pageshow", () => {
+    checkExperimentStage("declaration");
+});

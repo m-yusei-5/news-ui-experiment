@@ -1,8 +1,22 @@
 const answerButton = document.getElementById("answer_button");
 
+answerButton.disabled = true;
+
+let questionnaireStartTime;
+
+if (sessionStorage.getItem("experimentStage") === "questionnaire") {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            questionnaireStartTime = startTimer();
+            answerButton.disabled = false;
+        });
+    });
+}
+
 answerButton.addEventListener(
     "click",
     ()=>{
+
         const questions = document.querySelectorAll(".questionnaire_container");
 
         let hasUnanswered = false;
@@ -25,6 +39,8 @@ answerButton.addEventListener(
             alert("すべての問題に回答してください");
             return;
         }
+
+        answerButton.disabled = true;
 
         questions.forEach(
             (question)=>{
@@ -64,6 +80,20 @@ answerButton.addEventListener(
         );
         console.log("全問回答済み");
 
-        window.location.href = "finish.html";
+
+        addLog(
+                "questionnaire_complete",
+                    null,
+                    {
+                        responseTimeMs: getElapsedTime(questionnaireStartTime),
+                        questionCount: questions.length
+                    }
+                );
+
+        goToNextStage("finish", "finish.html");
     }
 );
+
+window.addEventListener("pageshow", () => {
+    checkExperimentStage("questionnaire");
+});

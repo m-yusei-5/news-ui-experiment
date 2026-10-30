@@ -1,9 +1,5 @@
 if (sessionStorage.getItem("experimentStartTime") === null) {
-  startExperiment("list");
-}
-
-if (sessionStorage.getItem("browsingStartTime") === null) {
-  sessionStorage.setItem("browsingStartTime", Date.now());
+  startExperiment("single");
 }
 
 //HTMLのsingle_UIのの
@@ -90,7 +86,7 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       const articleId =
           entry.target.dataset.articleId;
-      if (entry.intersectionRatio >= 0.8) {        
+      if (entry.intersectionRatio >= 0.5) {        
         if (!visibleStartTimes.has(articleId)){
           const timeId=setTimeout(() => {   //１秒後に行う処理の予約
           console.log("1秒経った",articleId);
@@ -112,7 +108,7 @@ const observer = new IntersectionObserver(
         timers.set(articleId,timeId);
 
         console.log(
-          "80%以上表示：",
+          "50%以上表示：",
           articleId
         );
         }
@@ -125,7 +121,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.8
+    threshold: 0.5
   }
 );
 
@@ -180,7 +176,7 @@ function restoreSinglePosition(){
       if (targetPage!==null){
         container.scrollTo({
           top: targetPage.offsetTop,
-          block: "start"
+          behavior: "auto"
         });
       }   
     }
@@ -193,17 +189,38 @@ function restoreSinglePosition(){
 
     requestAnimationFrame(() => {
       startArticleObserver();
+      if (sessionStorage.getItem("browsingStartTime") === null) {
+        sessionStorage.setItem("browsingStartTime", Date.now());
+      }
+
+      endButton.disabled = false;
     });
   });
 }
 
-restoreSinglePosition();
-
 const endButton = document.querySelector(".end_button");
+
+endButton.disabled = true;
+
+// ニュース閲覧中の場合だけ初期化する
+if (sessionStorage.getItem("experimentStage") === "browsing") {
+    restoreSinglePosition();
+}
+
 
 endButton.addEventListener(
   "click",
   ()=>{
+    const confirmed = window.confirm(
+        "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
+      );
+
+      if (!confirmed) {
+        return;
+      }
+
+    endButton.disabled = true;
+
     endAllArticleExposure();
 
     const browsingStartTime = Number(
@@ -220,7 +237,21 @@ endButton.addEventListener(
       }
     );
 
-    window.location.href =
-      "memory.html";
+    sessionStorage.setItem("browsingFinished", "true");
+
+    goToNextStage("cognition", "cognition.html");
+
   }
 );
+
+window.addEventListener("pageshow", (event) => {
+  checkExperimentStage("browsing");
+
+  if (
+    event.persisted &&
+    sessionStorage.getItem("experimentStage") === "browsing"
+  ) {
+    observer.disconnect();
+    startArticleObserver();
+  }
+});

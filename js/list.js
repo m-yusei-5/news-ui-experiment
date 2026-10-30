@@ -2,10 +2,6 @@ if (sessionStorage.getItem("experimentStartTime") === null) {
   startExperiment("list");
 }
 
-if (sessionStorage.getItem("browsingStartTime") === null) {
-  sessionStorage.setItem("browsingStartTime", Date.now());
-}
-
 //ニュース記事を並べる位置を取得してcontainerという変数に保存する
 const container = document.getElementById("list-container");
 
@@ -261,17 +257,36 @@ function restoreListPosition(){
       startArticleObserver();
       checkHeadlineCenter();
       window.addEventListener("scroll",checkHeadlineCenter);
+      if (sessionStorage.getItem("browsingStartTime") === null) {
+        sessionStorage.setItem("browsingStartTime", Date.now());
+      }
+      endButton.disabled = false;
     });
   });
 }
 
-restoreListPosition();
-
 const endButton = document.querySelector(".end_button");
+
+endButton.disabled = true;
+
+// ニュース閲覧中の場合だけ初期化する
+if (sessionStorage.getItem("experimentStage") === "browsing") {
+    restoreListPosition();
+}
 
 endButton.addEventListener(
   "click",
   ()=>{
+    const confirmed = window.confirm(
+            "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+    endButton.disabled = true;
+
     endAllArticleExposure();
     endAllCenterExposure();
 
@@ -289,7 +304,18 @@ endButton.addEventListener(
       }
     );
 
-    window.location.href =
-      "memory.html";
+    goToNextStage("cognition", "cognition.html");
   }
 );
+
+window.addEventListener("pageshow", (event) => {
+  checkExperimentStage("browsing");
+
+  if (
+    event.persisted &&
+    sessionStorage.getItem("experimentStage") === "browsing"
+  ) {
+    observer.disconnect();
+    startArticleObserver();
+  }
+});

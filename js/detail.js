@@ -52,7 +52,7 @@ const backLink =
 if (condition === "list") {
   backLink.href = "list.html";
 } 
-else{
+else if(condition === "single"){
   backLink.href = "single.html";
 }
 
@@ -87,3 +87,7 @@ window.addEventListener(
   "pagehide",
   recordDetailClose
 );
+
+window.addEventListener("pageshow", () => {
+    checkExperimentStage("browsing");
+});

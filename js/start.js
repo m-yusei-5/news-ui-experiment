@@ -36,3 +36,17 @@ startButton.addEventListener("click", async () => {
         startButton.disabled = false;
     }
 });
+
+window.addEventListener("pageshow", () => {
+
+    const currentStage =
+        sessionStorage.getItem("experimentStage");
+
+    // 実験開始前なら何もしない
+    if (currentStage === null) {
+        return;
+    }
+
+    // 実験開始済みなら現在の実験段階へ移動
+    checkExperimentStage("start");
+});

@@ -1,5 +1,18 @@
 const answerButton = document.getElementById("answer_button");
 
+answerButton.disabled = true;
+
+let cognitionStartTime;
+
+if (sessionStorage.getItem("experimentStage") === "cognition") {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            cognitionStartTime = startTimer();
+            answerButton.disabled = false;
+        });
+    });
+}
+
 answerButton.addEventListener(
     "click",
     ()=>{
@@ -26,6 +39,8 @@ answerButton.addEventListener(
             return;
         }
 
+        answerButton.disabled = true;
+
         questions.forEach(
             (question)=>{
                 const selectedAnswer = question.querySelector(
@@ -44,6 +59,19 @@ answerButton.addEventListener(
         );
         console.log("全問回答済み");
 
-        window.location.href = "memory.html";
+        addLog(
+            "cognition_complete",
+            null,
+            {
+                responseTimeMs: getElapsedTime(cognitionStartTime),
+                questionCount: questions.length
+            }
+        );
+
+        goToNextStage("memory", "memory.html");
     }
 );
+
+window.addEventListener("pageshow", () => {
+    checkExperimentStage("cognition");
+});

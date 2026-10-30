@@ -28,56 +28,186 @@ const testArticles = newsData.filter(
 console.log("見られた記事配列",testArticles);
 
 const dummyArticles = [
-  {
-    id: "dummy01",
-    title: "ダミー記事のタイトル1",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy02",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy03",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy04",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy05",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy06",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy07",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy08",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy09",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  },
-  {
-    id: "dummy10",
-    title: "ダミー記事のタイトル2",
-    correctAnswer: "unseen"
-  }
+    {
+        id: "dummy01",
+        sourceId: "news01",
+        title: "仮のダミー記事1",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy02",
+        sourceId: "news02",
+        title: "仮のダミー記事2",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy03",
+        sourceId: "news03",
+        title: "仮のダミー記事3",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy04",
+        sourceId: "news04",
+        title: "仮のダミー記事4",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy05",
+        sourceId: "news05",
+        title: "仮のダミー記事5",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy06",
+        sourceId: "news06",
+        title: "仮のダミー記事6",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy07",
+        sourceId: "news07",
+        title: "仮のダミー記事7",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy08",
+        sourceId: "news08",
+        title: "仮のダミー記事8",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy09",
+        sourceId: "news09",
+        title: "仮のダミー記事9",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy10",
+        sourceId: "news10",
+        title: "仮のダミー記事10",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy11",
+        sourceId: "news11",
+        title: "仮のダミー記事11",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy12",
+        sourceId: "news12",
+        title: "仮のダミー記事12",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy13",
+        sourceId: "news13",
+        title: "仮のダミー記事13",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy14",
+        sourceId: "news14",
+        title: "仮のダミー記事14",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy15",
+        sourceId: "news15",
+        title: "仮のダミー記事15",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy16",
+        sourceId: "news16",
+        title: "仮のダミー記事16",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy17",
+        sourceId: "news17",
+        title: "仮のダミー記事17",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy18",
+        sourceId: "news18",
+        title: "仮のダミー記事18",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy19",
+        sourceId: "news19",
+        title: "仮のダミー記事19",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy20",
+        sourceId: "news20",
+        title: "仮のダミー記事20",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy21",
+        sourceId: "news21",
+        title: "仮のダミー記事21",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy22",
+        sourceId: "news22",
+        title: "仮のダミー記事22",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy23",
+        sourceId: "news23",
+        title: "仮のダミー記事23",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy24",
+        sourceId: "news24",
+        title: "仮のダミー記事24",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy25",
+        sourceId: "news25",
+        title: "仮のダミー記事25",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy26",
+        sourceId: "news26",
+        title: "仮のダミー記事26",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy27",
+        sourceId: "news27",
+        title: "仮のダミー記事27",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy28",
+        sourceId: "news28",
+        title: "仮のダミー記事28",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy29",
+        sourceId: "news29",
+        title: "仮のダミー記事29",
+        correctAnswer: "unseen"
+    },
+    {
+        id: "dummy30",
+        sourceId: "news30",
+        title: "仮のダミー記事30",
+        correctAnswer: "unseen"
+    }
 ];
 
 // 閲覧可能だった記事を再認課題用に変換
@@ -175,11 +305,26 @@ memoryQuestions.forEach((article)=>{
     );
 });
 
+
 const answerButton = document.getElementById("answer_button");
+
+answerButton.disabled = true;
+
+let memoryStartTime;
+
+if (sessionStorage.getItem("experimentStage") === "memory") {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            memoryStartTime = startTimer();
+            answerButton.disabled = false;
+        });
+    });
+}
 
 answerButton.addEventListener(
     "click",
     ()=>{
+
         const questions = document.querySelectorAll(".memory_question");
 
         let hasUnanswered = false;
@@ -203,11 +348,22 @@ answerButton.addEventListener(
             return;
         }
 
+        answerButton.disabled = true;
+
+        addLog(
+                    "memory_complete",
+                    null,
+                    {
+                        responseTimeMs: getElapsedTime(memoryStartTime),
+                        questionCount: memoryQuestions.length
+                    }
+                );
+
         questions.forEach(
             (question)=>{
                 const selectedAnswer = question.querySelector(
                     'input[type="radio"]:checked'
-                );
+                );                
 
                 const articleId = question.dataset.articleId;
 
@@ -225,9 +381,13 @@ answerButton.addEventListener(
         );
         console.log("全問回答済み");
 
-        window.location.href = "declaration.html";
+        goToNextStage("declaration", "declaration.html");
     }
 );
+
+window.addEventListener("pageshow", () => {
+    checkExperimentStage("memory");
+});
 
 
 

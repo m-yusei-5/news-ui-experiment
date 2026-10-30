@@ -10,6 +10,8 @@ async function submitData() {
         await saveExperimentData();
 
         // 保存成功
+        sessionStorage.setItem("experimentStage", "completed");
+        
         document.getElementById("saving_message").style.display = "none";
         document.getElementById("finish_message").style.display = "block";
 
