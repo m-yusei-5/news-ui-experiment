@@ -25,9 +25,9 @@ startButton.addEventListener("click", async () => {
 
         // ④ ニュース画面へ移動
         if (condition === "list") {
-            window.location.href = "list.html";
+            window.location.replace("list.html");
         } else {
-            window.location.href = "single.html";
+            window.location.replace("single.html");
         }
 
     } catch (error) {
