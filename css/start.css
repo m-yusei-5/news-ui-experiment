@@ -14,12 +14,17 @@ header h1{
 }
 
 header h2{
-    text-align: center;
+    /* text-align: center; */
     font-weight: bold;
     font-size: 17px;
     margin: 40px 0px 70px;
     color: rgb(255, 35, 35);
     text-decoration: underline;
+}
+
+header h2 p {
+      margin-bottom: 40px;
+      line-height: 1.8;
 }
 
 .thanks {
