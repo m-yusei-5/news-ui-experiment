@@ -86,19 +86,23 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       const articleId =
           entry.target.dataset.articleId;
-      if (entry.intersectionRatio >= 0.5) {        
+      if (
+        !document.hidden &&
+        sessionStorage.getItem("experimentStage") === "browsing" &&
+        entry.intersectionRatio >= 0.5
+      )   
+      {       
         if (!visibleStartTimes.has(articleId)){
-          const timeId=setTimeout(() => {   //１秒後に行う処理の予約
-          console.log("1秒経った",articleId);
+          const timeId = setTimeout(() => {
+            if (
+              !document.hidden &&
+              visibleStartTimes.has(articleId)
+            ) {
+              addLog("article_visible", articleId);
+            }
 
-          addLog(
-            "article_visible",
-            articleId
-          );
-
-          timers.delete(articleId);
-
-        }, 1000);
+            timers.delete(articleId);
+          }, 1000);
 
         visibleStartTimes.set(
           articleId,
@@ -133,6 +137,20 @@ function startArticleObserver() {
     observer.observe(page);
   });
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    endAllArticleExposure();
+    observer.disconnect();
+
+    pauseBrowsingTimer();
+  } else if (
+    sessionStorage.getItem("experimentStage") === "browsing"
+  ) {
+    resumeBrowsingTimer();
+    startArticleObserver();
+  }
+});
 
 //HTMLの中の記事がクリックされたときの記事を把握するため、aタグのclassをすべて探してそれぞれをlinkという変数に一時的に保存する
 //そのlinkを参照し、そのlinkに対してクリックされた時にidを取得するためにaタグの一個前のsectionタグをclassを読み込み、pageに保存
@@ -221,12 +239,8 @@ endButton.addEventListener("click", () => {
 
   endAllArticleExposure();
 
-  const browsingStartTime = Number(
-    sessionStorage.getItem("browsingStartTime")
-  );
-
   addLog("browsing_end", null, {
-    browsingTime: Date.now() - browsingStartTime
+      browsingTime: getBrowsingTime()
   });
 
   sessionStorage.setItem("browsingFinished", "true");

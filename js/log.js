@@ -51,6 +51,8 @@ function startExperiment(condition){
 
     // 前回の閲覧情報を初期化
     sessionStorage.removeItem("browsingStartTime");
+    sessionStorage.removeItem("browsingHiddenStart");
+    sessionStorage.removeItem("browsingHiddenTotal");
     sessionStorage.removeItem("listScrollPosition");
     sessionStorage.removeItem("singleCurrentArticle");
 
@@ -85,6 +87,67 @@ function startTimer() {
 // 開始時刻からの経過時間を取得する
 function getElapsedTime(startTime) {
     return Date.now() - startTime;
+}
+
+// Safariが非表示になった時刻を記録
+function pauseBrowsingTimer() {
+    if (sessionStorage.getItem("experimentStage") !== "browsing") {
+        return;
+    }
+
+    if (sessionStorage.getItem("browsingStartTime") === null) {
+        return;
+    }
+
+    if (sessionStorage.getItem("browsingHiddenStart") === null) {
+        sessionStorage.setItem("browsingHiddenStart", Date.now());
+    }
+}
+
+// Safariに戻ったとき、非表示時間を累積
+function resumeBrowsingTimer() {
+    const hiddenStart = sessionStorage.getItem("browsingHiddenStart");
+
+    if (hiddenStart === null) {
+        return;
+    }
+
+    const hiddenTotal = Number(
+        sessionStorage.getItem("browsingHiddenTotal") || 0
+    );
+
+    const hiddenDuration = Date.now() - Number(hiddenStart);
+
+    sessionStorage.setItem(
+        "browsingHiddenTotal",
+        hiddenTotal + hiddenDuration
+    );
+
+    sessionStorage.removeItem("browsingHiddenStart");
+}
+
+// Safari非表示時間を除いた総閲覧時間
+function getBrowsingTime() {
+    const startTime = sessionStorage.getItem("browsingStartTime");
+
+    if (startTime === null) {
+        return 0;
+    }
+
+    const hiddenTotal = Number(
+        sessionStorage.getItem("browsingHiddenTotal") || 0
+    );
+
+    const hiddenStart = sessionStorage.getItem("browsingHiddenStart");
+
+    const ongoingHiddenTime = hiddenStart === null
+        ? 0
+        : Date.now() - Number(hiddenStart);
+
+    return Math.max(
+        0,
+        Date.now() - Number(startTime) - hiddenTotal - ongoingHiddenTime
+    );
 }
 
 // 次の実験段階へ進む

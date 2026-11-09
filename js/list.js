@@ -74,18 +74,21 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       const articleId =
           entry.target.dataset.articleId;
-      if (entry.intersectionRatio >= 0.5) {        
+      if (
+        !document.hidden &&
+        sessionStorage.getItem("experimentStage") === "browsing" &&
+        entry.intersectionRatio >= 0.5)
+      {        
         if (!visibleStartTimes.has(articleId)){
-          const timeId=setTimeout(() => {   //１秒後に行う処理の予約
-          console.log("1秒経った",articleId);
-
-          addLog(
-            "article_visible",
-            articleId
-          );
+          const timeId = setTimeout(() => {
+          if (
+            !document.hidden &&
+            visibleStartTimes.has(articleId)
+          ) {
+            addLog("article_visible", articleId);
+          }
 
           timers.delete(articleId);
-
         }, 1000);
 
         visibleStartTimes.set(
@@ -160,7 +163,14 @@ function endAllCenterExposure(){
   );
 }
 
-function checkHeadlineCenter(){
+function checkHeadlineCenter() {
+  if (
+    document.hidden ||
+    sessionStorage.getItem("experimentStage") !== "browsing"
+  ) {
+    return;
+  }
+
   const headlines = document.querySelectorAll(".title");
 
   headlines.forEach((headline)=>{
@@ -195,6 +205,25 @@ function checkHeadlineCenter(){
     }
   });
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    endAllArticleExposure();
+    endAllCenterExposure();
+
+    observer.disconnect();
+
+    pauseBrowsingTimer();
+  } else if (
+    sessionStorage.getItem("experimentStage") === "browsing"
+  ) {
+    resumeBrowsingTimer();
+
+    observer.disconnect();
+    startArticleObserver();
+    checkHeadlineCenter();
+  }
+});
 
 
 //HTMLの中の記事がクリックされたときの記事を把握するため、aタグのclassをすべて探してそれぞれをlinkという変数に一時的に保存する
@@ -254,12 +283,18 @@ function restoreListPosition(){
     }
 
     requestAnimationFrame(() => {
-      startArticleObserver();
-      checkHeadlineCenter();
-      window.addEventListener("scroll",checkHeadlineCenter);
       if (sessionStorage.getItem("browsingStartTime") === null) {
         sessionStorage.setItem("browsingStartTime", Date.now());
       }
+
+      if (!document.hidden) {
+        resumeBrowsingTimer();
+        startArticleObserver();
+        checkHeadlineCenter();
+      }
+
+      window.addEventListener("scroll", checkHeadlineCenter);
+      
       endButton.disabled = false;
     });
   });
@@ -290,32 +325,33 @@ endButton.addEventListener(
     endAllArticleExposure();
     endAllCenterExposure();
 
-    const browsingStartTime = Number(
-      sessionStorage.getItem(
-        "browsingStartTime"
-      )
-    );
-
-    addLog(
-      "browsing_end",
-      null,
-      {
-        browsingTime: Date.now() - browsingStartTime
-      }
-    );
+    addLog("browsing_end", null, {
+      browsingTime: getBrowsingTime()
+    });
 
     goToNextStage("cognition", "cognition.html");
   }
 );
+
+window.addEventListener("pagehide", () => {
+  endAllArticleExposure();
+  endAllCenterExposure();
+
+  observer.disconnect();
+});
 
 window.addEventListener("pageshow", (event) => {
   checkExperimentStage("browsing");
 
   if (
     event.persisted &&
-    sessionStorage.getItem("experimentStage") === "browsing"
+    sessionStorage.getItem("experimentStage") === "browsing" &&
+    !document.hidden
   ) {
+    resumeBrowsingTimer();
+
     observer.disconnect();
     startArticleObserver();
+    checkHeadlineCenter();
   }
 });

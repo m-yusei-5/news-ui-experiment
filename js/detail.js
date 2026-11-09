@@ -1,10 +1,18 @@
+if (
+  !document.hidden &&
+  sessionStorage.getItem("experimentStage") === "browsing"
+) {
+  resumeBrowsingTimer();
+}
+
 const params = new URLSearchParams(window.location.search);
 
 const articleId = params.get("id");
 
 const condition = params.get("condition");
 
-const detailStartTime=performance.now();
+let detailActiveStart = Date.now();
+let detailActiveTotal = 0;
 
 //クリックされた記事とnews-data.jsにある記事を照合して同じidのものをselectedNewsに保存する
 const selectedNews = newsData.find((news) => {
@@ -56,38 +64,70 @@ else if(condition === "single"){
   backLink.href = "single.html";
 }
 
-let detailCloseLogged=false;
+let detailCloseLogged = false;
 
-function recordDetailClose(){
-    if(detailCloseLogged){
-        return;
-    }
-
-    detailCloseLogged=true;
-
-    const durationMs=Math.round(
-        performance.now()-detailStartTime
-    );
-
-    addLog(
-        "detail_close",
-        articleId,
-        {
-            durationMs: durationMs
-        }
-    );
+// 詳細画面の計測を停止
+function pauseDetailTimer() {
+  if (detailActiveStart !== null) {
+    detailActiveTotal += Date.now() - detailActiveStart;
+    detailActiveStart = null;
+  }
 }
 
-backLink.addEventListener(
-  "click",
-  recordDetailClose
-);
+// 詳細画面の計測を再開
+function resumeDetailTimer() {
+  if (detailActiveStart === null && !detailCloseLogged) {
+    detailActiveStart = Date.now();
+  }
+}
 
-window.addEventListener(
-  "pagehide",
-  recordDetailClose
-);
+// 詳細画面の終了を記録
+function recordDetailClose() {
+  if (detailCloseLogged) {
+    return;
+  }
 
-window.addEventListener("pageshow", () => {
-    checkExperimentStage("browsing");
+  pauseDetailTimer();
+
+  detailCloseLogged = true;
+
+  addLog("detail_close", articleId, {
+    durationMs: detailActiveTotal
+  });
+}
+
+// Safariの表示状態が変化したとき
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    pauseDetailTimer();
+    pauseBrowsingTimer();
+  } else {
+    resumeBrowsingTimer();
+    resumeDetailTimer();
+  }
+});
+
+// 戻るリンクを押したとき
+backLink.addEventListener("click", recordDetailClose);
+
+// ページを離れるとき
+window.addEventListener("pagehide", () => {
+  pauseDetailTimer();
+  recordDetailClose();
+});
+
+// ページに戻ったとき
+window.addEventListener("pageshow", (event) => {
+  checkExperimentStage("browsing");
+
+  if (event.persisted && !document.hidden) {
+    resumeBrowsingTimer();
+
+    // 履歴から復帰した場合は新しい閲覧として記録
+    detailCloseLogged = false;
+    detailActiveTotal = 0;
+    detailActiveStart = Date.now();
+
+    addLog("detail_open", articleId);
+  }
 });
