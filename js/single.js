@@ -241,5 +241,9 @@ endButton.addEventListener("click", () => {
 
   sessionStorage.setItem("browsingFinished", "true");
 
-  goToNextStage("cognition", "cognition.html");
+  if (sessionStorage.getItem("phase") === "1") {
+    startSecondBrowsing();
+  } else {
+      goToNextStage("cognition", "cognition.html");
+  }
 });

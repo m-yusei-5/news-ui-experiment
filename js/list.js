@@ -325,7 +325,11 @@ endButton.addEventListener(
       browsingTime: getBrowsingTime()
     });
 
-    goToNextStage("cognition", "cognition.html");
+    if (sessionStorage.getItem("phase") === "1") {
+        startSecondBrowsing();
+    } else {
+        goToNextStage("cognition", "cognition.html");
+    }
   }
 );
 
