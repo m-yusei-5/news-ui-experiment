@@ -24,7 +24,10 @@ function addLog(
 
     const newLog={
         participantId: sessionStorage.getItem("participantId"),
+        patternId: sessionStorage.getItem("patternId"),
         condition: sessionStorage.getItem("condition"),
+        articleSet: sessionStorage.getItem("articleSet"),
+        phase: sessionStorage.getItem("phase"),
         event: eventName,
         articleId: articleId,
         elapsedMs: Date.now() - startTime,
@@ -40,35 +43,36 @@ function addLog(
     console.log("追加したログ：",newLog);
 }
 
-function startExperiment(condition){
+function startExperiment(pattern, patternId) {
 
-    if(sessionStorage.getItem("participantId")===null){
+    if (sessionStorage.getItem("participantId") === null) {
         sessionStorage.setItem(
             "participantId",
             crypto.randomUUID()
         );
     }
 
-    // 前回の閲覧情報を初期化
-    sessionStorage.removeItem("browsingStartTime");
-    sessionStorage.removeItem("browsingHiddenStart");
-    sessionStorage.removeItem("browsingHiddenTotal");
-    sessionStorage.removeItem("listScrollPosition");
-    sessionStorage.removeItem("singleCurrentArticle");
+    // 閲覧情報を初期化
+    resetBrowsingData();
 
+    // 実験開始時刻
+    const startTime = Date.now();
 
-    const startTime=Date.now();
+    sessionStorage.setItem("experimentStartTime", startTime);
 
+    // 実験パターンを保存
+    sessionStorage.setItem("patternId", String(patternId));
     sessionStorage.setItem(
-        "experimentStartTime",
-        startTime
+        "experimentPattern",
+        JSON.stringify(pattern)
     );
 
-    sessionStorage.setItem(
-        "condition",
-        condition
-    );
+    // 1回目の閲覧条件
+    sessionStorage.setItem("phase", "1");
+    sessionStorage.setItem("condition", pattern[0].ui);
+    sessionStorage.setItem("articleSet", pattern[0].set);
 
+    // ログを初期化（実験開始時だけ）
     sessionStorage.setItem(
         "experimentLogs",
         JSON.stringify([])
@@ -187,3 +191,32 @@ function checkExperimentStage(pageStage) {
     }
 }
 
+function resetBrowsingData() {
+    sessionStorage.removeItem("browsingStartTime");
+    sessionStorage.removeItem("browsingHiddenStart");
+    sessionStorage.removeItem("browsingHiddenTotal");
+    sessionStorage.removeItem("listScrollPosition");
+    sessionStorage.removeItem("singleCurrentArticle");
+}
+
+function startSecondBrowsing() {
+
+    const pattern = JSON.parse(
+        sessionStorage.getItem("experimentPattern")
+    );
+
+    // 1回目の閲覧情報を初期化
+    resetBrowsingData();
+
+    // 2回目の条件を設定
+    sessionStorage.setItem("phase", "2");
+    sessionStorage.setItem("condition", pattern[1].ui);
+    sessionStorage.setItem("articleSet", pattern[1].set);
+
+    sessionStorage.setItem("experimentStage", "browsing");
+
+    addLog("second_browsing_start");
+
+    // 2回目のニュース画面へ移動
+    window.location.replace(pattern[1].ui + ".html");
+}

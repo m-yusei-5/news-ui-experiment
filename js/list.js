@@ -1,12 +1,8 @@
-if (sessionStorage.getItem("experimentStartTime") === null) {
-  startExperiment("list");
-}
-
 //ニュース記事を並べる位置を取得してcontainerという変数に保存する
 const container = document.getElementById("list-container");
 
 //news-date.jsからニュース記事をそれぞれ取り出し、その配置の仕方をarticleHTMLに保存する
-newsData.forEach((news) => {
+currentNewsData.forEach((news) => {
   const articleHTML=`
     <article class="list_page" data-article-id="${news.id}">
       <a class=list_link href="detail.html?id=${news.id}&condition=list">

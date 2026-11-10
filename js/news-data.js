@@ -366,3 +366,22 @@ const newsData = [
     paragraphs: [""]
   }
 ];
+
+// 現在の実験で使用する記事セット
+const articleSet = sessionStorage.getItem("articleSet");
+
+// 記事セットA・Bを振り分ける
+const currentNewsData = newsData.filter((news) => {
+
+    const articleNumber = Number(news.id.replace("news", ""));
+
+    if (articleSet === "A") {
+        return articleNumber >= 1 && articleNumber <= 15;
+    }
+
+    if (articleSet === "B") {
+        return articleNumber >= 16 && articleNumber <= 30;
+    }
+
+    return false;
+});

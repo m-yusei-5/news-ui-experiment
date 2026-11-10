@@ -1,12 +1,8 @@
-if (sessionStorage.getItem("experimentStartTime") === null) {
-  startExperiment("single");
-}
-
 //HTMLのsingle_UIのの
 const container =
   document.getElementById("single_container");
 
-newsData.forEach((news) => {
+currentNewsData.forEach((news) => {
   const articleHTML = `
     <article class="single_page" data-article-id="${news.id}">
       <a class="single_link" href="detail.html?id=${news.id}&condition=single">

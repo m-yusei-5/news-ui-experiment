@@ -2,6 +2,26 @@ import { loginAnonymously } from "./firebase.js";
 
 const startButton = document.getElementById("start_button");
 
+// 4つの実験パターン
+const patterns = [
+    [
+        { ui: "list", set: "A" },
+        { ui: "single", set: "B" }
+    ],
+    [
+        { ui: "single", set: "B" },
+        { ui: "list", set: "A" }
+    ],
+    [
+        { ui: "list", set: "B" },
+        { ui: "single", set: "A" }
+    ],
+    [
+        { ui: "single", set: "A" },
+        { ui: "list", set: "B" }
+    ]
+];
+
 startButton.addEventListener("click", async () => {
 
     startButton.disabled = true;
@@ -11,24 +31,21 @@ startButton.addEventListener("click", async () => {
         const user = await loginAnonymously();
         console.log("認証成功：", user.uid);
 
-        // ② 実験条件をランダムに決定
-        let condition;
+        // ② 4パターンからランダムに選択
+        const patternId = Math.floor(Math.random() * 4);
+        const pattern = patterns[patternId];
 
-        if (Math.random() > 0.5) {
-            condition = "list";
-        } else {
-            condition = "single";
-        }
+        // ③ 実験条件を保存
+        sessionStorage.setItem("patternId", String(patternId));
+        sessionStorage.setItem("experimentPattern", JSON.stringify(pattern));
+        sessionStorage.setItem("phase", "1");
+        sessionStorage.setItem("articleSet", pattern[0].set);
 
-        // ③ 実験開始情報を記録
-        startExperiment(condition);
+        // ④ 実験開始情報を記録
+        startExperiment(pattern, patternId);;
 
-        // ④ ニュース画面へ移動
-        if (condition === "list") {
-            window.location.replace("list.html");
-        } else {
-            window.location.replace("single.html");
-        }
+        // ⑤ 1回目のニュース画面へ移動
+        window.location.replace(pattern[0].ui + ".html");
 
     } catch (error) {
         console.error("匿名認証に失敗しました：", error);
