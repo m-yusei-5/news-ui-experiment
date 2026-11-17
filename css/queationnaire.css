@@ -30,6 +30,7 @@ header p {
     margin-bottom: 30px;
 }
 
+
 .question {
     font-size: 17px;
     width: fit-content;
@@ -38,12 +39,22 @@ header p {
     transform: translateX(3px);
 }
 
+.questionnaire_option_frequency {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px 18px;
+    width: fit-content;
+    font-size: 15px;
+    margin: 0 auto;
+    transform: translateX(12px);
+}
+
 .questionnaire_option {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 18px 18px;
     width: fit-content;
-    font-size: 13px;
+    font-size: 15px;
     margin: 0 auto;
     transform: translateX(12px);
 }
@@ -69,7 +80,7 @@ header p {
 }
 
 .scale_label_original {
-    font-size: 10px;
+    font-size: 12px;
     display: flex;
     justify-content: space-between;
     width: 280px;

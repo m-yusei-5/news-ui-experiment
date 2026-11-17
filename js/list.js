@@ -308,9 +308,13 @@ if (sessionStorage.getItem("experimentStage") === "browsing") {
 endButton.addEventListener(
   "click",
   ()=>{
-    const confirmed = window.confirm(
-            "ニュースの閲覧を終了しますか？\n終了後はニュース画面に戻れません。"
-        );
+    const phase = sessionStorage.getItem("phase");
+
+    const message = phase === "1"
+        ? "1回目のニュース閲覧を終了し、次の閲覧条件に進みますか？\n終了後は現在のニュース画面に戻れません。"
+        : "2回目のニュース閲覧を終了し、次の課題に進みますか？\n終了後はニュース画面に戻れません。";
+
+    const confirmed = window.confirm(message);
 
         if (!confirmed) {
             return;

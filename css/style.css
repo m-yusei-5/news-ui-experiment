@@ -44,7 +44,7 @@ header {
 }
 
 .title {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     width: fit-content;
     margin: 0 auto 0px;
@@ -70,16 +70,6 @@ header {
     object-fit: cover;
     object-position: center top;
 }
-
-/* .img_shiiku img,
-.img_valley img {
-    width: 100%;
-    border-radius: 10px;
-    aspect-ratio: 16/10;
-    margin: 0 auto 15px;
-    object-fit: cover;
-    object-position: center 30%;
-} */
 
 #orientation_warning {
   display: none;
