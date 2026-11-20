@@ -56,7 +56,9 @@ answerButton.addEventListener(
                     "search_tendency",
                     "current_search_intent",
                     "list_ui_familiarity",
-                    "single_ui_familiarity"
+                    "single_ui_familiarity",
+                    "experiment_burden",
+                    "second_browsing_fatigue"
                 ];
 
                 let response;
@@ -80,15 +82,28 @@ answerButton.addEventListener(
         );
         console.log("全問回答済み");
 
+        // 自由記述の回答を取得
+        const pilotComment = document.getElementById("pilot_comment").value;
 
+        // 自由記述をログに保存
         addLog(
-                "questionnaire_complete",
-                    null,
-                    {
-                        responseTimeMs: getElapsedTime(questionnaireStartTime),
-                        questionCount: questions.length
-                    }
-                );
+            "questionnaire_answer",
+            null,
+            {
+                questionName: "pilot_comment",
+                response: pilotComment
+            }
+        );
+
+        // アンケート完了ログ
+        addLog(
+            "questionnaire_complete",
+            null,
+            {
+                responseTimeMs: getElapsedTime(questionnaireStartTime),
+                questionCount: questions.length + 1
+            }
+        );
 
         goToNextStage("finish", "finish.html");
     }

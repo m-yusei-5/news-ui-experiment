@@ -30,6 +30,13 @@ header p {
     margin-bottom: 30px;
 }
 
+.pilot_comment_container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 24px 20px 30px;
+    margin-bottom: 30px;
+}
+
 
 .question {
     font-size: 17px;
