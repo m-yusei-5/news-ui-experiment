@@ -2344,7 +2344,7 @@ const newsData = [
     id: "news118",
     title: "あるんだ?! あのカメラが生えてるロボスマホに後継機開発の噂",
     date: "11/16（月）",
-    image: "img/あのカメラが生えてるロボスマホに後継機開発の噂　IT.webp",
+    image: "img/ロボスマホ　IT.webp",
     imageClass: "img",
     paragraphs: [
   "2026年の個性的なスマートフォンといえば、背面からカメラが飛び出す「Honor Robot Phone」です。折りたたみの「iPhone Duo」、画面を一新した「Galaxy Z Fold8」、1万mAh超のバッテリーを備える「Honor Win 2」などもある中、MWC 2026で正式発表された変わり種スマホです。",
