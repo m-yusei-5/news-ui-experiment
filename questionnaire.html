@@ -326,6 +326,113 @@
         </main>
     </div>
 
+    <div class="questionnaire_container">
+        <p class="question">
+            実験全体の負担はどの程度でしたか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くない</span>
+                <span>かなりある</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="7">
+                7
+            </label>
+        </main>
+    </div>
+
+    <div class="questionnaire_container">
+        <p class="question">
+            2回目の閲覧で疲労や飽きを感じましたか？
+        </p>
+        <div class="scale_label_original">
+                <span>全くそう思わない</span>
+                <span>非常にそう思う</span>
+        </div>
+        <main class="original_option">
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="1">
+                1
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="2">
+                2
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="3">
+                3
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="4">
+                4
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="5">
+                5
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="6">
+                6
+            </label>
+            <label class="number_option">
+                <input type="radio" name="single_ui_familiarity" value="7">
+                7
+            </label>
+        </main>
+    </div>
+
+    <div class="questionnaire_container">
+        <p class="question">
+            自由なタイミングで閲覧を終了できることを理解していましたか？
+        </p>
+        <main class="original_option">
+            <label>
+                <input type="radio" name="recognition-${article.id}" value="seen">
+                はい
+            </label>
+            <label>
+                <input type="radio" name="recognition-${article.id}" value="unseen">
+                いいえ
+            </label>
+        </main>
+    </div>
+
+    <div class="questionnaire_container">
+        <p class="question">
+            実験中に分かりにくかった点や気になった点があれば記入してください。
+        </p>
+        <textarea
+            id="pilot_comment"
+            placeholder="自由に記入してください（任意）"
+            rows="4"
+        ></textarea>
+    </div>
+
     <button id="answer_button">
         回答を送信
     </button>
