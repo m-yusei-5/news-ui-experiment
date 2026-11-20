@@ -64,6 +64,7 @@ header h2 p {
 .flow_direction {
     font-size: 16px;
     margin-top: 20px;
+    margin-bottom: 40px;
     transform: translateX(5px);
     line-height: 1.5;
     width: 283px;
@@ -108,7 +109,7 @@ strong {
     border: 4px solid red;
     border-radius: 50%;
     background: transparent;
-    transform: translate(35px,-682px);
+    transform: translate(35px,-465px);
 }
 
 .ellipse3 {
@@ -118,7 +119,7 @@ strong {
     border: 4px solid red;
     border-radius: 50%;
     background: transparent;
-    transform: translate(28px,-620px);
+    transform: translate(28px,-460px);
     
 }
 

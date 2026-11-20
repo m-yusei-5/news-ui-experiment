@@ -187,13 +187,13 @@ p {
 
 .swipe_guide{
   position: absolute;
-  bottom: 15px;
+  bottom: 60px;
   left: 50%;
 
   margin: 0;
 
   color: #777777;
-  font-size: 11px;
+  font-size: 15px;
   white-space: nowrap;
 
   transform: translateX(-50%);
@@ -202,7 +202,7 @@ p {
 .swipe_icon {
     text-align: center;
     margin: 3px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 #orientation_warning {

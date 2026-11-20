@@ -18,7 +18,7 @@ currentNewsData.forEach((news) => {
         <div class=swipe_icon>
           ↑
         </div>
-        上にスワイプ
+        次の記事へスワイプ
       </div>
     </article>
   `;
