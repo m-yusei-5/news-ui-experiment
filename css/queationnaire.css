@@ -46,6 +46,16 @@ header p {
     transform: translateX(3px);
 }
 
+.questionnaire_option_age {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px 18px;
+    width: fit-content;
+    font-size: 15px;
+    margin: 0 100px 0 85px;
+    transform: translateX(12px);
+}
+
 .questionnaire_option_frequency {
     display: grid;
     grid-template-columns: 1fr;
