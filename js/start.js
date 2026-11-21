@@ -31,8 +31,20 @@ startButton.addEventListener("click", async () => {
         const user = await loginAnonymously();
         console.log("認証成功：", user.uid);
 
-        // ② 4パターンからランダムに選択
-        const patternId = Math.floor(Math.random() * 4);
+        // ② URLからパターン番号を取得
+        const params = new URLSearchParams(window.location.search);
+        const requestedPattern = params.get("pattern");
+
+        // URLで指定されていればそのパターンを使用
+        // 指定がなければランダム
+        const patternId = requestedPattern === null
+            ? Math.floor(Math.random() * 4)
+            : Number(requestedPattern) - 1;
+
+        if (!Number.isInteger(patternId) || patternId < 0 || patternId >= 4) {
+            throw new Error("無効なパターン番号です");
+        }
+
         const pattern = patterns[patternId];
 
         // ③ 実験条件を保存
