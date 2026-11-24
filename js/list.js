@@ -326,7 +326,21 @@ endButton.addEventListener(
     endAllCenterExposure();
 
     addLog("browsing_end", null, {
-      browsingTime: getBrowsingTime()
+        browsingTime: getBrowsingTime(),
+
+        browsingStartTime: Number(
+            sessionStorage.getItem("browsingStartTime")
+        ),
+
+        rawBrowsingTime: Date.now() - Number(
+            sessionStorage.getItem("browsingStartTime")
+        ),
+
+        hiddenTotal: Number(
+            sessionStorage.getItem("browsingHiddenTotal") || 0
+        ),
+
+        hiddenStart: sessionStorage.getItem("browsingHiddenStart")
     });
 
     if (sessionStorage.getItem("phase") === "1") {

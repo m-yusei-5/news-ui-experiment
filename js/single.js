@@ -175,7 +175,7 @@ const links=document.querySelectorAll(".single_link")
     });
   });
 
-//restoreListPositionという関数を作り、中で先ほど保存したlistCurrentArticleを取り出し、savedListPositionに代入する
+//restoreSinglePositionという関数を作り、中で先ほど保存したlistCurrentArticleを取り出し、savedListPositionに代入する
 function restoreSinglePosition(){
 
   const savedArticleId =
@@ -202,12 +202,16 @@ function restoreSinglePosition(){
     }
 
     requestAnimationFrame(() => {
-      startArticleObserver();
-      if (sessionStorage.getItem("browsingStartTime") === null) {
-        sessionStorage.setItem("browsingStartTime", Date.now());
-      }
+        if (sessionStorage.getItem("browsingStartTime") === null) {
+            sessionStorage.setItem("browsingStartTime", Date.now());
+        }
 
-      endButton.disabled = false;
+        if (!document.hidden) {
+            resumeBrowsingTimer();
+            startArticleObserver();
+        }
+
+        endButton.disabled = false;
     });
   });
 }
@@ -241,7 +245,21 @@ endButton.addEventListener("click", () => {
   endAllArticleExposure();
 
   addLog("browsing_end", null, {
-      browsingTime: getBrowsingTime()
+      browsingTime: getBrowsingTime(),
+
+      browsingStartTime: Number(
+          sessionStorage.getItem("browsingStartTime")
+      ),
+
+      rawBrowsingTime: Date.now() - Number(
+          sessionStorage.getItem("browsingStartTime")
+      ),
+
+      hiddenTotal: Number(
+          sessionStorage.getItem("browsingHiddenTotal") || 0
+      ),
+
+      hiddenStart: sessionStorage.getItem("browsingHiddenStart")
   });
 
   sessionStorage.setItem("browsingFinished", "true");
